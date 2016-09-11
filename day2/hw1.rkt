@@ -85,6 +85,6 @@
   b
   )
   
-(display (my-max '(1 10 2 20 3))) (newline) ;; -> 20
+(display (my-max (list 1 10 2 20 3))) (newline) ;; -> 20
 
 
