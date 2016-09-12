@@ -61,7 +61,7 @@ ADD, SUB, MUL and DIV now work on arbitrarily many inputs.
         [(equal? (first x) 'GE) (>= (calculate (first (rest x))) (calculate (last (rest x))))]
         [(equal? (first x) 'LE) (<= (calculate (first (rest x))) (calculate (last (rest x))))]
         [(equal? (first x) 'EQ) (= (calculate (first (rest x))) (calculate (last (rest x))))]
-        [(equal? (first x) 'NEQ) (not(= (calculate (first (rest x))) (calculate (last (rest x)))))]
+        [(equal? (first x) 'NEQ) (not (= (calculate (first (rest x))) (calculate (last (rest x)))))]
         [(equal? (first x) 'AND) (and (calculate (first (rest x))) (calculate (last (rest x))))]
         [(equal? (first x) 'OR) (or (calculate (first (rest x))) (calculate (last (rest x))))]
         [(equal? (first x) 'NOT) (not (calculate (rest x)))] ; I don't actually know how this is used - I'm assuming it flips a single boolean.
