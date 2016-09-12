@@ -35,8 +35,13 @@
       1))
   
 (display (fact 1)) (newline) ;; -> 1
+<<<<<<< HEAD
 (display (fact 2)) (newline) ;; -> 1 SHOULD THIS BE 2? GOOGLE SAYS 2 FACTORIAL IS 2 BUT I'M NOT CONFIDENT.
 
+=======
+(display (fact 2)) (newline) ;; -> 2
+(display (fact 3)) (newline) ;; -> 6
+>>>>>>> 57dba957e7d9e8a93ae37001b2768555208e796e
 
 ;; 4.  WRITE FIBONACCI:  given n, returns the nth fibonacci number as shown below
 ;;     Hint:  don't run this on really big numbers!
@@ -85,6 +90,6 @@
   b
   )
   
-(display (my-max '(1 10 2 20 3))) (newline) ;; -> 20
+(display (my-max (list 1 10 2 20 3))) (newline) ;; -> 20
 
 

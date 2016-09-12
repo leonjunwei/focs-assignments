@@ -35,7 +35,9 @@
       1))
   
 (display (fact 1)) (newline) ;; -> 1
-(display (fact 2)) (newline) ;; -> 1 SHOULD THIS BE 2? GOOGLE SAYS 2 FACTORIAL IS 2 BUT I'M NOT CONFIDENT.
+
+(display (fact 2)) (newline) ;; -> 2
+(display (fact 3)) (newline) ;; -> 6
 
 
 ;; 4.  WRITE FIBONACCI:  given n, returns the nth fibonacci number as shown below
