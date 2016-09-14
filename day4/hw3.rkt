@@ -1,11 +1,11 @@
 #lang racket
 
-;;; Student Name: Frankly Olin [change to your name]
+;;; Student Name: Leon Lam [change to your name]
 ;;;
 ;;; Check one:
 ;;; [ ] I completed this assignment without assistance or external resources.
-;;; [ ] I completed this assignment with assistance from ___
-;;;     and/or using these external resources: ___
+;;; [X] I completed this assignment with assistance from ___
+;;;     and/or using these external resources: Homework 2 soln's calculate function (much neater than mine, plus self-evaluation already included)
 
 ;;;;;;;;;;;
 ;; 1. assq
@@ -91,3 +91,4 @@ lst could be a nested list '((x 1)(y 2))
 (define lookup '((x 3) (y 12) (z 2)))
 (evaluate '(ADD y 4) lookup)
 (evaluate '(AND (GT (ADD x 4) (MUL 5 6)) (LE (ADD 3 (MUL 4 5)) (SUB 0 (SUB (ADD 3 4) (MUL 5 6))))) lookup)
+(evaluate '(IPH (GT (ADD x 4) 7) (ADD 1 2) (ADD 1 3)) lookup) ;; -> 4
