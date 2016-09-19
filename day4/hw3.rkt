@@ -40,16 +40,16 @@ lst could be a nested list '((x 1)(y 2))
 (define (my-assq key lst)
   (cond
     [(not (list? (first lst))) (if (eq? key (first lst))
-                                   lst
+                                   (second lst)
                                    #f)]
     [else (if (eq? key (first (first lst)))
-              (first lst)
+              (second (first lst))
               (my-assq key (rest lst))
               )]
     )
   )
 
-(my-assq 'x '((y 1)(x 2)))
+(my-assq 'x '((y 1)(x 2))) ;; Just returns 2 now
 
 
 ;;;;;;;;;;;
@@ -84,7 +84,7 @@ lst could be a nested list '((x 1)(y 2))
   (cond [(number? expr) expr]   ;; these first three cases are sometimes called
         [(boolean? expr) expr]  ;; self-evaluating (because they are their own
         [(null? expr) expr]     ;; values and don't need explicit evaluating)
-        [(symbol? expr) (last (my-assq expr lookup-list))]
+        [(symbol? expr) (my-assq expr lookup-list)]
         [(list? expr) (apply-operator (first expr) (map (lambda (i) (evaluate i lookup-list)) (rest expr)))]
         [else (error `(evaluate:  not sure what to do with expr ,expr))]))
 
