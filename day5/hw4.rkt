@@ -148,10 +148,10 @@
         [(DEFINE? expr) (repl (append lookup-list (list (list (second expr) (evaluate (third expr) lookup-list)))))]
         [(LAMBDACREATE? expr) expr]
         [(LAMBDA? expr) (lambdaH lookup-list expr)]
-        [(list? expr) (apply-operator (first expr) (map (lambda (n) (evaluate n lookup-list)) (rest expr))) ] ; We're trying to use this to process both lambdas and normal lists, which is a problem.
+        [(list? expr) (apply-operator (evaluate (first expr) lookup-list) (map (lambda (n) (evaluate n lookup-list)) (rest expr))) ] ; We're trying to use this to process both lambdas and normal lists, which is a problem.
         [else (error `(evaluate:  not sure what to do with expr ,expr))]))
 
-(evaluate (process-lambda '((LAMBDA (n) (ADD n 1 )) 7)) operator-list)
+;(evaluate (process-lambda '((LAMBDA (n) (ADD n 1 )) 7)) operator-list)
 (define b '(LAMBDA (n) (ADD n 1 )))
 (LAMBDA? (list b 7))
 
@@ -186,4 +186,4 @@
 ;(lambda-constructor '(LAMBDA (n) (n+1)))
 
 
-;(run-repl)
+(run-repl)
