@@ -1,13 +1,13 @@
-# FOCS Fall 2016 Homework 14
+﻿# FOCS Fall 2016 Homework 14
 
 You may edit your answers into this file, or add a separate file in the same directory.
 
 If you add a separate file, please include the following at the top.
 In either case, add your name and check one of the boxes.
 
-Student Name: Frankly Olin [change to your name]
+Student Name: Leon Lam [change to your name]
 Check one:
-[ ] I completed this assignment without assistance or external resources.
+[X] I completed this assignment without assistance or external resources.
 [ ] I completed this assignment with assistance from ___
     and/or using these external resources: ___
 
@@ -19,13 +19,13 @@ For each of the following pairs of functions, identify a multiplier and a minimu
 
 
   A. 367n+1098     and     2n                  [n0 = 40; k=200]
-  B. n^2 + 2n + 6    and     6n^2 - 25
-  C. n^3 + n^2 - 2n     and     6n^2 - 25
-  D. 869,438    and    923
-  E. 2^n    and    3^n
-  F. 3^n    and    2^n
-  G. log_2 n     and    log_10 n    [NB:  these are intended to be log-base-2 of n and log-base-10 of n]
-  H. log_10 n^2    and     log_2 n
+  B. n^2 + 2n + 6    and     6n^2 - 25	       [n0 = 100; k = just a bit below 6]
+  C. n^3 + n^2 - 2n     and     6n^2 - 25      [n^3 grows faster than n^2]
+  D. 869,438    and    923	               [n0 = any number, k = 1000]
+  E. 2^n    and    3^n			       [n0 = any number, k = 1]
+  F. 3^n    and    2^n			       [3^n grows faster than 2^n]
+  G. log_2 n     and    log_10 n    	       [log_2 n and log_10 n are just factors of each other, so they grow at the same relative speed]	[NB:  these are intended to be log-base-2 of n and log-base-10 of n]
+  H. log_10 n^2    and     log_2 n             [log_10 n^2 = 2 log_10 n, and log_10 n is just a factor of log_2 n, so they still grow at the same relative speed]
 
 
 II. Linear data structures
@@ -34,17 +34,38 @@ For the following problem, assume that it costs 1 unit to access a structure -- 
 
 Assume that you have n elements stored in an array and the same n elements stored in a linked list; you have no other references to these data structures.  You may assume that n > 10.  How much does it cost to perform each of the following actions?
 
-  A. Read the value of the first element in the array?  In the list?
-  B. Read the value of the seventh element in the array?  In the list?
-  C. Add an element to the array?  [Where is the cheapest place to add it?]  To the list?  [Where is the cheapest place to add it?]
+  A. Read the value of the first element in the array?  In the list? 
+(Array: 1, list:1)
+
+  B. Read the value of the seventh element in the array?  In the list? 
+(Array: 1, list:7)
+
+  C. Add an element to the array?  [Where is the cheapest place to add it?]  To the list?  [Where is the cheapest place to add it?] 
+(Array: We'd have to move the ith through nth element, right at the end at n would cost us only 1 but inserting at the beginning would cost us n, so something in O(n-i) plus some constant factor)
+(List: i to get to the insertion point on the list plus either 2 or 4 to reforge the links, depending on whether the list is singly or doubly linked (unidirectional or bidirectional) - the cheapest place to add would be the beginning)
+
   D. Delete the fifth element from the array?  From the list?
+(Array: We'd have to move the 6th to the nth element up by one, so n-6+1.)
+(List: 5+ 2 or 4.)
+
   E. Confirm that a particular element -- say x -- is present in the array?  In the list?
+(n for both in the worst case scenario)
+
   F. Confirm that a particular element -- say y -- is NOT present in the array?  In the list?
+(n for both in the worst case scenario)
 
 Now assume that you can maintain one extra piece of storage for the data structure.  In the case of the array, you may want to maintain a length reference.
-In the case of the linked list, what would be similarly helpful?
+In the case of the linked list, what would be similarly helpful? 
+(Location of head/tail elements, assuming doubly-linked list)
+
 G. How much would it cost now to add an element to the end of the array?  To add an element to the end of the list?
+(Array: Still 1)
+(List: 2 for doubly-linked)
+
 H. How much would it cost now to delete an element from the array?  From the list?  What if it were the final element?  The penultimate element?
+(Array: Still on O(n-i).)
+(List: deletion from the ends now scales with distance i from the tail element, starting at 2 for the final element, 4 for the penultimate element and scaling by 2*i)
 
 Finally, assume that both the array and the linked list are sorted, i.e., that their elements are in some predictable order (say, comparable by < or <=).
   J. How much would it cost to confirm that a particular element -- say x -- is present in the array?  In the list?  To confirm that a particular element -- say y -- is not present in the array?  In the list?
+(Membership can be determined via a search, and a search on an array can be done in log n with something like bisection, but a search on the linked list still takes n units)
